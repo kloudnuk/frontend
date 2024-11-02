@@ -3,7 +3,6 @@ import logo from '../img/logo.png';
 import '../css/App.css';
 
 class Header extends Component {
-
     render() {
         return (        
             <div className="App-header">
