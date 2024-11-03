@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import rpi from '../img/rpi.png';
 import '../css/App.css';
 import { GrStatusGood  } from "react-icons/gr";
-// import { GrStatusWarning } from "react-icons/gr";
+import { GrStatusWarning } from "react-icons/gr";
+
+function DeviceStatus(props) {
+    if (props.status === "RUNNING") {
+        return <i><GrStatusGood color="green" /></i>;
+    } else {
+        return <i><GrStatusWarning color="orange" /></i>
+    }
+}
 
 export default function DeviceCard(props) {
 
-    const [data] = useState(JSON.parse(localStorage.getItem("Devices")));
+    const [data, setData] = useState(JSON.parse(localStorage.getItem("Devices")) || '');
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem("Devices")) != null) {
+            setData(JSON.parse(localStorage.getItem("Devices"))[props.item]);
+        }
+        const eventHandler = (e) => {
+            if (e.key === 'Devices') setData(e.newValue[props.item]);
+        };
+        window.addEventListener('storage', eventHandler);
+    }, []);
 
     return (
         <div className="Device-card">
@@ -15,16 +32,16 @@ export default function DeviceCard(props) {
             </div>
             <div className="Device-info">
                 <div className="device-card-item">
-                    <strong>{data[props.item].name}</strong>
+                    <strong>{data.name}</strong>
                 </div>
                 <div className="device-card-item">
-                    <i><GrStatusGood color="green" /></i>
+                    <DeviceStatus status={data.status} />
                 </div>
                 <table >
                     <tbody>
                         <tr>
-                            <td>Oldest Time Sync</td>
-                            <td>2024-10-28T13:45:00</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

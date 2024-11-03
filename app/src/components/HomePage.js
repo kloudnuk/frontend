@@ -39,6 +39,24 @@ class HomePage extends Component {
         return (
             <div className="Grid-container">
                 <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
+                <DeviceCard item={0}/>
             </div>
         );
     }

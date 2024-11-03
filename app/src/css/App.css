@@ -1,13 +1,15 @@
 
 .App-header {
+  position: fixed;
   background-color: #3f3f3f;
   height: 160px;
-  padding: 20px;
+  padding: 20px 0px 20px;
   color: white;
   display: flex;
   display: -webkit-flex;
-  padding-left: 8px;
-  padding-right: 8px;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 .Banner-container {
   -webkit-flex: 1;
@@ -46,14 +48,14 @@
   height: 60px;
   border-radius: 8px;
   padding: 15px;
-  margin-right: 10px;
+  margin-right: 30px;
 }
 .Button:hover {
   background-color: #20a087;
 }
 nav {
   float: left;
-  margin: 100px auto 0;
+  margin: 90px auto 0;
   position: relative;
   width: 540px;
   height: 50px;
@@ -123,18 +125,25 @@ nav .start-users, a:nth-child(5):hover~.animation {
   background-color: #e67e22;
 }
 .Content {
+  margin-top: 12%;
   display: block;
   gap: 20px;
   padding: 20px;
   width: 100%;
 }
 .Grid-container {
-  width: 94%;
+  margin-right: 2%;
+  margin-left: 2%;
+  width: 96%;
+  display: grid;
+  grid-template-columns: repeat(4, 23%);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 }
 .Device-card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 26%;
+  max-width: 420px;
   border-radius: 8px;
 }
 .Device-card:hover {
