@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import rpi from '../img/rpi.png';
 import '../css/App.css';
 import { GrStatusGood  } from "react-icons/gr";
@@ -14,17 +14,6 @@ function DeviceStatus(props) {
 
 export default function DeviceCard(props) {
 
-    const [data, setData] = useState(JSON.parse(localStorage.getItem("Devices")) || '');
-    useEffect(() => {
-        if (JSON.parse(localStorage.getItem("Devices")) != null) {
-            setData(JSON.parse(localStorage.getItem("Devices"))[props.item]);
-        }
-        const eventHandler = (e) => {
-            if (e.key === 'Devices') setData(e.newValue[props.item]);
-        };
-        window.addEventListener('storage', eventHandler);
-    }, []);
-
     return (
         <div className="Device-card">
             <div className="card-logo-container">
@@ -32,10 +21,10 @@ export default function DeviceCard(props) {
             </div>
             <div className="Device-info">
                 <div className="device-card-item">
-                    <strong>{data.name}</strong>
+                    <strong>{props.device.name}</strong>
                 </div>
                 <div className="device-card-item">
-                    <DeviceStatus status={data.status} />
+                    <DeviceStatus status={props.device.status} />
                 </div>
                 <table >
                     <tbody>

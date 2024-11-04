@@ -189,3 +189,22 @@ i {
 #device-card-name {
   text-align: center;
 }
+
+@media (max-width: 810px) {
+  .Content {
+    margin-top: 28%;
+    display: block;
+    gap: 10px;
+    padding: 20px;
+    width: 100%;
+  }
+  .Grid-container {
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 96%;
+    display: grid;
+    grid-template-columns: repeat(2, 46%);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}
