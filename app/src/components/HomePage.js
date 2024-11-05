@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/App.css';
 import SessionContext from "../objects/SessionContext";
 import DeviceCard from './DeviceCard';
 
 export default function HomePage() {
     
-    const [data, setData] = useState('');
+    const [, setData] = useState('');
+    const deviceListRef = useRef([]);
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", 
@@ -20,15 +21,17 @@ export default function HomePage() {
                     headers: headers
                 })
             const result = await response.json();
-            setData(result[0]);
-            console.log(result);
+            deviceListRef.current = [...result].map((e, i) => {
+                setData(result[i]);
+                return <DeviceCard key={i} device={{"name": e.name, "status": e.status}} />
+            });
         };
         fetchData();
     }, []);
 
     return (
         <div className="Grid-container">
-            <DeviceCard device={data}/>
+            {deviceListRef.current}
         </div>
     );
 }
