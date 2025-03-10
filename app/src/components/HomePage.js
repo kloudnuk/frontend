@@ -8,14 +8,15 @@ export default function HomePage() {
     const [, setData] = useState('');
     const deviceListRef = useRef([]);
     const headers = new Headers();
+    const ep = SessionContext.webserverEndpoint;
+    const user = SessionContext.userDetails;
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", 
-        "Basic " + btoa(SessionContext.userDetails.name + 
-                    ":" + SessionContext.userDetails.password));
-
+        "Basic " + btoa(`${user.name}:${user.password}`));
     useEffect (() => {
         const fetchData = async () => {
-            const response = await fetch("http://localhost:8000/api/v1/devices/?org=Playground", 
+            const response = 
+                await fetch(`${ep.proto}://${ep.baseUrl}/${ep.apiUrl}/devices/?org=Playground`, 
                 {
                     method: "GET",
                     headers: headers
